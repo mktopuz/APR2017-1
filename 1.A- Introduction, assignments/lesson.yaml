@@ -7,8 +7,8 @@
   Version: 1.0
 
 - Class: text
-  Output: Welcome to the Interactive R learning tool preperad by Center for Health Systems Innovation using swirlify package.
-    There are 5 modules for you to finish for the first chapter, and they are cumulative, so it is better for you to follow the order.
+  Output: Welcome to the Interactive R learning tool.
+    There are 6 modules for you to finish, and they are cumulative, so it is better for you to follow the order.
 
  
 - Class: text
