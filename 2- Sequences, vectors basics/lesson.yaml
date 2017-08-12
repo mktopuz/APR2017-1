@@ -1,0 +1,399 @@
+- Class: meta
+  Course: Lesson2
+  Lesson: Part1.3
+  Author: Kazim TOpuz
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: Welcome to the second session!
+  
+- Class: text
+  Output: Before we start the lesson lets remember, what we have learned so far!
+
+- Class: text
+  Output: 'The way you assign a value to a variable in R is by using the assignment
+    operator, which is just a ''less than'' symbol followed by a ''minus'' sign. It
+    looks like this: <-'
+
+- Class: text
+  Output: Think of the assignment operator as an arrow. You are assigning the value
+    on the right side of the arrow to the variable name on the left side of the arrow.
+
+- Class: cmd_question
+  Output: Let`s assign the result of log (4 + 5) to a new variable called x. This can be read as 'x gets log 4 plus 5'. Give it a try now.
+  CorrectAnswer: x <- log (4 + 5)
+  AnswerTests: any_of_exprs('x <- log (4 + 5)', 'x <- log (5 + 4)', 'x <- log (9)')
+  Hint: Type x <- log(4 + 5) or x <- log(5 + 4) . It's important to include a single space on each side of
+    the assignment operator, but do NOT put a space between the `<` and the `-` that
+    form the arrow.
+    
+- Class: text
+  Output: Now, let's create a small collection of numbers called a vector. Any object
+    that contains data is called a data structure and numeric vectors are the simplest
+    type of data structure in R. In fact, even a single number is considered a vector
+    of length one.
+
+- Class: cmd_question
+  Output: The easiest way to create a vector is with the c() function, which stands
+    for 'concatenate' or 'combine'. To create a vector containing the numbers 1.1,
+    9, and 3.14, type c(1.1, 9, 3.14). Try it now and store the result in a variable
+    called z.
+  CorrectAnswer: z <- c(1.1, 9, 3.14)
+  AnswerTests: omnitest(correctExpr='z <- c(1.1, 9, 3.14)')
+  Hint: Inputting z <- c(1.1, 9, 3.14) will assign the vector (1.1, 9, 3.14) to a
+    new variable called z. Including single spaces after the commas in the vector
+    is not required, but helps make your code less cluttered and more readable.
+
+- Class: cmd_question
+  Output: 'Numeric vectors can be used in arithmetic expressions. Type the following
+    to see what happens: z * 2 + 100.'
+  CorrectAnswer: z * 2 + 100
+  AnswerTests: omnitest(correctExpr='z * 2 + 100')
+  Hint: Enter z * 2 + 100, without assigning the result to a variable. The `*` symbol
+    is used for multiplication and shares a key with the number 8 on many keyboards.
+- Class: text
+  Output: When we did z * 2 + 100 in our earlier example, z was a vector of length
+    3, but technically 2 and 100 are each vectors of length 1.
+
+- Class: text
+  Output: 'Behind the scenes, R is ''recycling'' the 2 to make a vector of 2s and
+    the 100 to make a vector of 100s. In other words, when you ask R to compute z
+    * 2 + 100, what it really computes is this: z * c(2, 2, 2) + c(100, 100, 100).'
+
+- Class: cmd_question
+  Output: To see another example of how this vector 'recycling' works, try adding
+    c(1, 2, 3, 4) and c(0, 10). Don't worry about saving the result in a new variable.
+  CorrectAnswer: c(1, 2, 3, 4) + c(0, 10)
+  AnswerTests: omnitest(correctExpr='c(1, 2, 3, 4) + c(0, 10)')
+  Hint: Enter c(1, 2, 3, 4) + c(0, 10) in the console to see how R adds two vectors
+    of different length. Don't assign the result to a variable
+    
+- Class: text
+  Output: "Now let`s remember how to examine your local workspace in R 
+    and begin to explore the relationship between your workspace and the file 
+    system of your machine."
+
+- Class: cmd_question
+  Output: Determine which directory your R session is using as its current 
+    working directory using getwd().
+  CorrectAnswer: getwd()
+  AnswerTests: omnitest(correctExpr='getwd()')
+  Hint: Type getwd() to determine the current working directory.    
+
+- Class: cmd_question
+  Output: Now let`s start our new class! To create a vector from a simple sequence of integers, for example, you use the colon operator (:). The code 3:7 gives you a vector with the numbers 3 to 7, type 3:7
+  CorrectAnswer: '3:7'
+  AnswerTests: omnitest(correctExpr='3:7')
+  Hint: Type 3:7 with no spaces. Make sure to use a regular colon and NOT a semi-colon.
+
+- Class: cmd_question
+  Output: Let`s try 4:-2 and see what happens
+  CorrectAnswer: '4:-2'
+  AnswerTests: omnitest(correctExpr='4:-2')
+  Hint: Type 4:-2 with no spaces. Make sure to use a regular colon and NOT a semi-colon.
+
+- Class: text
+  Output: Both examples have steps of 1. To make bigger or smaller steps in a sequence, use the seq() function. us every integer between (and including) 3 and 7. Here by argument allows you to specify the amount by which the numbers should increase or decrease
+  
+- Class: cmd_question
+  Output: For a vector with the numbers 4.5 to 2.5 in steps of -0.5, for example, you use the following code seq(from = 4.5, to = 2.5, by = -0.5)
+  CorrectAnswer: 'seq(from = 4.5, to = 2.5, by = -0.5)'
+  AnswerTests: omnitest(correctExpr='seq(from = 4.5, to = 2.5, by = -0.5)')
+  Hint: Type seq(from = 4.5, to = 2.5, by = -0.5)
+  
+- Class: text
+  Output: Alternatively, you can specify the length of the sequence by using the argument length.out. R calculates the step size itself.
+  
+- Class: cmd_question
+  Output: Now let`s make a vector of 5 values going from -2.5 to 2.5, you use the following code seq(from = -2.5, to = 2.5, length.out = 5)
+  CorrectAnswer: 'seq(from = -2.5, to = 2.5, length.out = 5)'
+  AnswerTests: omnitest(correctExpr='seq(from = -2.5, to = 2.5, length.out = 5)')
+  Hint: Type seq(from = -2.5, to = 2.5, length.out = 5)
+
+
+- Class: cmd_question
+  Output: Instead of length.out, you can also use just length without from and to specified. seq(-2.5, 2.5, length=5) does the trick. Give it
+    a shot now and store the result in a new variable called my_seq.
+  CorrectAnswer: my_seq <- seq(-2.5, 2.5, length=5)
+  AnswerTests: omnitest(correctExpr='my_seq <- seq(-2.5, 2.5, length=5)')
+  Hint: 'You''re using the same function here, but changing its arguments for different
+    results. Be sure to store the result in a new variable called my_seq, like this:
+    my_seq <- seq(-2.5, 2.5, length=5).'
+
+- Class: cmd_question
+  Output: To confirm that my_seq has length 5, we can use the length() function.
+    Try it now.
+  CorrectAnswer: length(my_seq)
+  AnswerTests: omnitest(correctExpr='length(my_seq)')
+  Hint: Use length(my_seq) to view the length of the my_seq variable.
+
+- Class: text
+  Output: Let's pretend we don't know the length of my_seq, but we want to generate
+    a sequence of integers from 1 to N, where N represents the length of the my_seq
+    vector. In other words, we want a new vector (1, 2, 3, ...) that is the same length
+    as my_seq.
+
+- Class: cmd_question
+  Output: 'There are several ways we could do this. One possibility is to combine
+    the `:` operator and the length() function like this: 1:length(my_seq). Give that
+    a try.'
+  CorrectAnswer: 1:length(my_seq)
+  AnswerTests: omnitest(correctExpr='1:length(my_seq)')
+  Hint: Try 1:length(my_seq), without assigning the result to a new variable.
+
+- Class: text
+  Output: There are often several approaches to solving the same problem, particularly
+    in R. Simple approaches that involve less typing are generally best. It's also
+    important for your code to be readable, so that you and others can figure out
+    what's going on without too much hassle.
+
+- Class: text
+  Output: If R has a built-in function for a particular task, it's likely that function
+    is highly optimized for that purpose and is your best option. As you become a
+    more advanced R programmer, you'll design your own functions to perform tasks
+    when there are no better options. We'll explore writing your own functions in
+    future lessons.
+
+- Class: text
+  Output: One more function related to creating sequences of numbers is rep(), which
+    stands for 'replicate'. Let's look at a few uses.
+
+- Class: cmd_question
+  Output: If we're interested in creating a vector that contains 40 zeros, we can
+    use rep(0, times = 40). Try it out.
+  CorrectAnswer: rep(0, times = 40)
+  AnswerTests: omnitest(correctExpr='rep(0, times = 40)')
+  Hint: Type rep(0, times = 40) to make a vector containing 40 zeros.
+
+- Class: cmd_question
+  Output: If instead we want our vector to contain 10 repetitions of the vector (0,
+    1, 2), we can do rep(c(0, 1, 2), times = 10). Go ahead.
+  CorrectAnswer: rep(c(0, 1, 2), times = 10)
+  AnswerTests: omnitest(correctExpr='rep(c(0, 1, 2), times = 10)')
+  Hint: Try rep(c(0, 1, 2), times = 10) for a different variation on the same theme.
+    Be sure to use the c() function to tell R that the numbers 0, 1, and 2 make up
+    a vector.
+
+- Class: cmd_question
+  Output: Finally, let's say that rather than repeating the vector (0, 1, 2) over
+    and over again, we want our vector to contain 10 zeros, then 10 ones, then 10
+    twos. We can do this with the `each` argument. Try rep(c(0, 1, 2), each = 10).
+  CorrectAnswer: rep(c(0, 1, 2), each = 10)
+  AnswerTests: omnitest(correctExpr='rep(c(0, 1, 2), each = 10)')
+  Hint: Type rep(c(0, 1, 2), each = 10) to see how the `each` argument to the rep()
+    function alters its behavior slightly.
+    
+    
+- Class: text
+  Output: The simplest and most common data structure in R is the vector.
+
+- Class: text
+  Output: 'Vectors come in two different flavors: atomic vectors and lists. An atomic
+    vector contains exactly one data type, whereas a list may contain multiple data
+    types. We''ll explore atomic vectors further before we get to lists.'
+
+- Class: text
+  Output: Now let`s see how to extract elements from a vector based on some conditions that we specify.
+
+- Class: text
+  Output: For example, we may only be interested in the first 20 elements of a vector, or only the elements that are not NA, or only those that are positive or correspond to a specific variable of interest. By the end of this lesson, you'll know how to handle each of these scenarios.
+
+- Class: cmd_question
+  Output: Let`s create a vector called x that contains only odd numbers ordered up to 100.Hint-- remember seq(from, to, by), or type skip() to see the answer
+  CorrectAnswer: x<-seq(1,100,2)
+  AnswerTests: omnitest(any_of_exprs='x<-seq(1,100,2)', "x<-seq(from= 1,to= 100,by=2)")
+  Hint: One way to create type x<-seq(1,100,2) to craete the vector.
+
+- Class: text
+  Output: The way you tell R that you want to select some particular elements (i.e. a 'subset') from a vector is by placing an 'index vector' in square brackets immediately following the name of the vector.
+
+- Class: cmd_question
+  Output: For a simple example, try x[1:10] to view the first ten elements of x.
+  CorrectAnswer: x[1:10]
+  AnswerTests: omnitest(correctExpr='x[1:10]')
+  Hint: View the first ten elements of x with x[1:10].
+  
+- Class: cmd_question
+  Output: Now let`s assign values > 5 and <50 to NA (missing value), try x[(x>5)&(x<50)]<-NA
+  CorrectAnswer: x[(x>5)&(x<50)]<-NA
+  AnswerTests: omnitest(correctExpr='x[(x>5)&(x<50)]<-NA')
+  Hint: Type x[(x>5)&(x<50)]<-NA.
+
+- Class: cmd_question
+  Output: Let`s see the x.
+  CorrectAnswer: x
+  AnswerTests: omnitest(correctExpr='x')
+  Hint: Just type x.
+
+- Class: text
+  Output: Index vectors come in four different flavors -- logical vectors, vectors of positive integers, vectors of negative integers, and vectors of character strings -- each of which we'll cover in this lesson.
+
+- Class: text
+  Output: Let's start by indexing with logical vectors. One common scenario when working with real-world data is that we want to extract all elements of a vector that are not NA (i.e. missing data). Recall that is.na(x) yields a vector of logical values the same length as x, with TRUEs corresponding to NA values in x and FALSEs corresponding to non-NA values in x.
+
+- Class: mult_question
+  Output: What do you think x[is.na(x)] will give you?
+  AnswerChoices: A vector of all NAs; A vector with no NAs; A vector of TRUEs and FALSEs; A vector of length 0
+  CorrectAnswer: A vector of all NAs
+  AnswerTests: omnitest(correctVal="A vector of all NAs")
+  Hint: Remember that is.na(x) tells us where the NAs are in a vector. So if we subset x based on that, what do you expect to happen?
+
+- Class: cmd_question
+  Output: Prove it to yourself by typing x[is.na(x)].
+  CorrectAnswer: x[is.na(x)]
+  AnswerTests: omnitest(correctExpr='x[is.na(x)]')
+  Hint: Type x[is.na(x)] to see that you get all NAs, which is clearly not what we want!
+
+- Class: cmd_question
+  Output: Recall that `!` gives us the negation of a logical expression, so !is.na(x) can be read as 'is not NA'. Therefore, if we want to create a vector called y that contains all of the non-NA values from x, we can use y <- x[!is.na(x)]. Give it a try.
+  CorrectAnswer: y <- x[!is.na(x)]
+  AnswerTests: omnitest(correctExpr='y <- x[!is.na(x)]')
+  Hint: Type y <- x[!is.na(x)] to capture all non-missing values from x.
+
+- Class: cmd_question
+  Output: Print y to the console.
+  CorrectAnswer: 'y'
+  AnswerTests: omnitest(correctExpr='y')
+  Hint: Type y to view its contents.
+
+- Class: text
+  Output: Now that we've isolated the non-missing values of x and put them in y, we can subset y as we please.
+
+- Class: mult_question
+  Output: Recall that the expression y > 0 will give us a vector of logical values the same length as y, with TRUEs corresponding to values of y that are greater than zero and FALSEs corresponding to values of y that are less than or equal to zero. What do you think y[y > 0] will give you?
+  AnswerChoices: A vector of all the positive elements of y; A vector of all the negative elements of y; A vector of all NAs; A vector of length 0; A vector of TRUEs and FALSEs
+  CorrectAnswer: A vector of all the positive elements of y
+  AnswerTests: omnitest(correctVal="A vector of all the positive elements of y")
+  Hint: The logical expression y > 0 will give us TRUE for each element of y that is positive. Based on that, what do you think y[y > 0] will return?
+
+- Class: cmd_question
+  Output: Type y[y > 0] to see that we get all of the positive elements of y, which are also the positive elements of our original vector x.
+  CorrectAnswer: y[y > 0]
+  AnswerTests: omnitest(correctExpr='y[y > 0]')
+  Hint: Type y[y > 0] to view only the positive elements of y.
+
+- Class: cmd_question
+  Output: You might wonder why we didn't just start with x[x > 0] to isolate the positive elements of x. Try that now to see why.
+  CorrectAnswer: x[x > 0]
+  AnswerTests: omnitest(correctExpr='x[x > 0]')
+  Hint: Try x[x > 0] to see why we didn't use this approach.
+
+- Class: text
+  Output: Since NA is not a value, but rather a placeholder for an unknown quantity, the expression NA > 0 evaluates to NA. Hence we get a bunch of NAs mixed in with our positive numbers when we do this.
+
+- Class: cmd_question
+  Output: Combining our knowledge of logical operators with our new knowledge of subsetting, we could do this -- x[!is.na(x) & x > 0]. Try it out.
+  CorrectAnswer: x[!is.na(x) & x > 0]
+  AnswerTests: omnitest(correctExpr='x[!is.na(x) & x > 0]')
+  Hint: Try x[!is.na(x) & x > 0] to see what you get.
+
+- Class: text
+  Output: In this case, we request only values of x that are both non-missing AND greater than zero.
+
+- Class: text
+  Output: I've already shown you how to subset just the first ten values of x using x[1:10]. In this case, we're providing a vector of positive integers inside of the square brackets, which tells R to return only the elements of x numbered 1 through 10.
+
+- Class: text
+  Output: Many programming languages use what's called 'zero-based indexing', which means that the first element of a vector is considered element 0. R uses 'one-based indexing', which (you guessed it!) means the first element of a vector is considered element 1.
+
+- Class: cmd_question
+  Output: Can you figure out how we'd subset the 3rd, 5th, and 7th elements of x? Hint -- Use the c() function to specify the element numbers as a numeric vector.
+  CorrectAnswer: x[c(3, 5, 7)]
+  AnswerTests: omnitest(correctExpr='x[c(3, 5, 7)]')
+  Hint: Create a vector of indexes with c(3, 5, 7), then put that inside of the square brackets.
+
+- Class: cmd_question
+  Output: It's important that when using integer vectors to subset our vector x, we stick with the set of indexes {1, 2, ..., 50} since x only has 50 elements. What happens if we ask for the zeroth element of x (i.e. x[0])? Give it a try.
+  CorrectAnswer: x[0]
+  AnswerTests: omnitest(correctExpr='x[0]')
+  Hint: Try x[0] to see what happens when we refer to the zeroth element of a vector, which is not defined in R.
+
+- Class: cmd_question
+  Output: As you might expect, we get nothing useful. Unfortunately, R doesn't prevent us from doing this. What if we ask for the 3000th element of x? Try it out.
+  CorrectAnswer: x[3000]
+  AnswerTests: omnitest(correctExpr='x[3000]')
+  Hint: Request the 3000th element of x (which does not exist) with x[3000].
+
+- Class: text
+  Output: Again, nothing useful, but R doesn't prevent us from asking for it. This should be a cautionary tale. You should always make sure that what you are asking for is within the bounds of the vector you're working with.
+
+- Class: text
+  Output: What if we're interested in all elements of x EXCEPT the 2nd and 10th? It would be pretty tedious to construct a vector containing all numbers 1 through 40 EXCEPT 2 and 10.
+
+- Class: cmd_question
+  Output: Luckily, R accepts negative integer indexes. Whereas x[c(2, 10)] gives us ONLY the 2nd and 10th elements of x, x[c(-2, -10)] gives us all elements of x EXCEPT for the 2nd and 10 elements.  Try x[c(-2, -10)] now to see this.
+  CorrectAnswer: x[c(-2, -10)]
+  AnswerTests: omnitest(correctExpr='x[c(-2, -10)]')
+  Hint: Give x[c(-2, -10)] a try.
+
+- Class: cmd_question
+  Output: A shorthand way of specifying multiple negative numbers is to put the negative sign out in front of the vector of positive numbers. Type x[-c(2, 10)] to get the exact same result.
+  CorrectAnswer: x[-c(2, 10)]
+  AnswerTests: omnitest(correctExpr='x[-c(2, 10)]')
+  Hint: Use x[-c(2, 10)] to simply things a bit. This could be a time saver if specifying many negative indexes.
+
+- Class: text
+  Output: So far, we've covered three types of index vectors -- logical, positive integer, and negative integer. The only remaining type requires us to introduce the concept of 'named' elements.
+
+- Class: cmd_question
+  Output: Create a numeric vector with three named elements using v1 <- c(Kanter = 11, Adams = 12, Westbrook = "zero").
+  CorrectAnswer: v1 <- c(Kanter = 11, Adams = 12, Westbrook = "zero")
+  AnswerTests: omnitest(correctExpr='v1 <- c(Kanter = 11, Adams = 12, Westbrook = "zero")')
+  Hint: Create a named vector with v1 <- c(Kanter = 11, Adams = 12, Westbrook = "zero").
+
+- Class: cmd_question
+  Output: When we print v1 to the console, you'll see that each element has a name. Try it out.
+  CorrectAnswer: v1
+  AnswerTests: omnitest(correctExpr='v1')
+  Hint: Type v1 to view its contents.
+
+- Class: cmd_question
+  Output: We can also get the names of v1 by passing v1 as an argument to the names() function. Give that a try.
+  CorrectAnswer: names(v1)
+  AnswerTests: omnitest(correctExpr='names(v1)')
+  Hint: Check out the results of names(v1).
+
+- Class: cmd_question
+  Output: Alternatively, we can create an unnamed vector v2 with c(11, 12, "zero"). Do that now.
+  CorrectAnswer: v2 <- c(11, 12, "zero")
+  AnswerTests: omnitest(correctExpr='v2 <- c(11, 12, "zero")')
+  Hint: Create an ordinary (unnamed) vector called v2 that contains c(11, 12, "zero").
+
+- Class: cmd_question
+  Output: Then, we can add the `names` attribute to v2 after the fact with names(v2) <- c("Kanter", "Adams", "Westbrook"). Go ahead.
+  CorrectAnswer: names(v2) <- c("Kanter", "Adams", "Westbrook")
+  AnswerTests: omnitest(correctExpr='names(v2) <- c("Kanter", "Adams", "Westbrook")')
+  Hint: Add names to v2 with names(v2) <- c("Kanter", "Adams", "Westbrook").
+
+- Class: cmd_question
+  Output: Now, let's check that v1 and v2 are the same by passing them as arguments to the identical() function, try identical(v1, v2).
+  CorrectAnswer: identical(v1, v2)
+  AnswerTests: any_of_exprs('identical(v1, v2)', 'identical(v2, v1)')
+  Hint: The identical() function tells us if its first two arguments are, well, identical.
+
+- Class: text
+  Output: Indeed, v1 and v2 are identical named vectors.
+
+- Class: mult_question
+  Output: Now, back to the matter of subsetting a vector by named elements. Which of the following commands do you think would give us the second element of v1?
+  AnswerChoices: v1["Adams"]; v1[Adams]; v1["12"]
+  CorrectAnswer: v1["Adams"]
+  AnswerTests: omnitest(correctVal='v1["Adams"]')
+  Hint: If we want the element named "Adams" (i.e. the second element of vect), which command would get us that?
+
+- Class: cmd_question
+  Output: Now, try it out.
+  CorrectAnswer: v1["Adams"]
+  AnswerTests: omnitest(correctExpr='v1["Adams"]')
+  Hint: Try v1["Adams"].
+
+- Class: cmd_question
+  Output: Likewise, we can specify a vector of names with v1[c("Kanter", "Adams")]. Try it out.
+  CorrectAnswer: v1[c("Kanter", "Adams")]
+  AnswerTests: omnitest(correctExpr='v1[c("Kanter", "Adams")]')
+  Hint: Use v1[c("Kanter", "Adams")] to get only the elements of v1 named "Kanter" and "Adams".
+
+- Class: text
+  Output: Now you know all four methods of subsetting data from vectors. Different approaches are best in different scenarios and when in doubt, try it out! See you next time!
